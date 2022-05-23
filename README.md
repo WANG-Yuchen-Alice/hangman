@@ -1,6 +1,10 @@
 # Hangman at Hogwarts
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->
+<p align="center">
+  <img src="./src/images/hogwarts-logo-transparent.jpeg" alt="Hogwarts Logo" width="300">
+  <br>
+</p>
 
 ## Introduction
 _Hangman at Hogwarts_ is a React-based Hangman game of Harry Porter theme, where players can switch among the four houses, Gryffindor, Slytherin, Ravenclaw, and Hufflepuff, of Hogwarts, and guess the names of the wizard or witch there. Like the majority of the traditional versions of Hangman games, players are given 6 chances per trial.
