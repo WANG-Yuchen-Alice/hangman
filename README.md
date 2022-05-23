@@ -22,5 +22,5 @@ To play the game, clone the repository to a local folder, navigate to it, and ru
 Then, open [http://localhost:3000](http://localhost:3000) to open it in the browser.
 
 ## Reference
-Hangman hand-drawn-style images: https://medium.com/@tundeszirak/hangman-game-with-reactjs-32b6587c5d66
-Hangman game basic structure: ozluy.github.io/projects/react-hangman
+- Hangman hand-drawn-style images: https://medium.com/@tundeszirak/hangman-game-with-reactjs-32b6587c5d66
+- Hangman game basic structure: ozluy.github.io/projects/react-hangman
