@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { randomWord } from "./RandomWord";
+import { randomName } from "./HogwartsNames";
 import "./Hangman.css";
 import image0 from "./images/0.jpg";
 import image1 from "./images/1.jpg";
@@ -20,18 +21,59 @@ class Hangman extends Component {
     this.state = {
       noOfWrong: 0,
       guessed: new Set(),
-      answer: randomWord(),
+      answer: randomName(),
+      mode: "Gryffindor", //G 0, S 1, R 2, H 3
     };
     this.handleGuess = this.handleGuess.bind(this);
     this.reset = this.reset.bind(this);
+    this.setG = this.setG.bind(this);
+    this.setS = this.setS.bind(this);
+    this.setR = this.setR.bind(this);
+    this.setH = this.setH.bind(this);
   }
 
   reset() {
     this.setState({
-      noOfWrong: 0,
+      noOfWrong: 3,
       guessed: new Set(),
-      answer: randomWord(),
+      answer: randomName(this.state.mode),
     });
+  }
+
+  setG() {
+    this.setState({
+        noOfWrong: 0,
+        guessed: new Set(),
+        answer: randomName("Gryffindor"),
+        mode: "Gryffindor",
+      });
+  }
+
+  setS() {
+    this.setState({
+        noOfWrong: 0,
+        guessed: new Set(),
+        answer: randomName("Slytherin"),
+        mode: "Slytherin",
+      }); 
+  }
+
+  setR() {
+    this.setState({
+        noOfWrong: 0,
+        guessed: new Set(),
+        answer: randomName("Ravenclaw"),
+        mode: "Ravenclaw",
+      }); 
+  }
+
+  setH() {
+    this.setState({
+        noOfWrong: 0,
+        guessed: new Set(),
+        answer: randomName("Hufflepuff"),
+        mode: "Hufflepuff",
+      }); 
   }
 
   guessedWord() {
@@ -49,7 +91,7 @@ class Hangman extends Component {
   }
 
   generateKeypad() {
-    return "abcdefghijklmnopqrstuvwxyz".split("").map((letter) => (
+    return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
       <button
         key={letter}
         value={letter}
@@ -65,25 +107,40 @@ class Hangman extends Component {
     const gameOver = this.state.noOfWrong >= this.props.maxWrong;
     const isWinner = this.guessedWord().join("") === this.state.answer;
     let gameState = this.generateKeypad();
-    if (isWinner) gameState = "Congrats, You have won the Game";
-    if (gameOver) gameState = "Better Luck Next Time";
+    if (isWinner) gameState = "Good. You have figured out your fellow.";
+    if (gameOver) gameState = "Oh no... Maybe 1 more year at Hogwarts?";
     let restart = gameOver || isWinner;
     return (
       <div className="Hangman">
-        <h2>Hangman</h2>
+        <h2>Hangman at Hogwarts</h2>
+        <p>
+        <gryButton id="gry" onClick={this.setG}>
+            Gryffindor
+        </gryButton>
+        <slyButton id="sly" onClick={this.setS}>
+            Slytherin
+        </slyButton>
+        <ravButton id="rav" onClick={this.setR}>
+            Ravenclaw
+        </ravButton>
+        <hufButton id="huf" onClick={this.setH}>
+            Hufflepuff
+        </hufButton>
+        </p>
         <img src={this.props.images[this.state.noOfWrong]} alt="HangMan" />
         <p>
-          Guessed Left: {this.props.maxWrong - this.state.noOfWrong} /{" "}
+          {this.props.maxWrong - this.state.noOfWrong} /{" "}
           {this.props.maxWrong}
         </p>
-        <p>Guess the Programming Language</p>
+        <p>Guess the name of a fellow wizard or witch in</p>
+        <p>{this.state.mode}</p>
         <p className="Hangman-word">
           {!gameOver ? this.guessedWord() : this.state.answer}
         </p>
         <p className="Hangman-btns">{gameState}</p>
         {restart && (
           <button id="reset" onClick={this.reset}>
-            Restart?
+            Let me try again!
           </button>
         )}
       </div>
