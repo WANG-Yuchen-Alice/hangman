@@ -24,3 +24,8 @@ Then, open [http://localhost:3000](http://localhost:3000) to open it in the brow
 ## Reference
 - Hangman hand-drawn-style images: https://medium.com/@tundeszirak/hangman-game-with-reactjs-32b6587c5d66
 - Hangman game boilerplate: https://github.com/ozluy/react-hangman
+
+## Demo
+
+https://user-images.githubusercontent.com/45040630/169832191-2e90df77-d956-4412-a38c-047fc057f9d0.mp4
+
